@@ -1,0 +1,22 @@
+The first day of the workshop will include the following:
+
+1) Installing the arduino Integrated Development Environment(IDE, Fancy term for where to write code)
+2) Learn how a bread board works
+3) Learn about Ohms Law V=IR, and how the arduino works
+
+
+Procedure: 
+
+1) Download the Arduino IDE for your operating system.You can download the IDE from https://www.arduino.cc/en/Main/Software.
+	Note: If you have any issues, double check you downloaded the IDE for the correct operating system.
+
+2) Learn Ohms Law! Basics will be covered in the workshop. 
+	Read more about Ohms law here: 
+		https://learn.sparkfun.com/tutorials/voltage-current-resistance-and-ohms-law/electricity-basics
+
+3) Learn how a bread board works! Basics will be covered in the workshop. 
+	Read more about breadboards here: 
+		http://www.sciencebuddies.org/science-fair-projects/how-to-use-a-breadboard.shtml
+		learn.sparkfun.com/tutorials/how-to-use-a-breadboard
+
+4) Learn about what the arduino does! https://www.quora.com/How-does-the-arduino-work-What-does-each-component-do-How-does-it-all-come-together
