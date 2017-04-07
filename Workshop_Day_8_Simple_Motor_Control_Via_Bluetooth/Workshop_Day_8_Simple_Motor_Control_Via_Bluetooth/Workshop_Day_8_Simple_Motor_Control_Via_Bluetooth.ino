@@ -1,42 +1,32 @@
 /*
 * Arduino code for SN754410 H-bridge
-* motor driver control.
-*Control the speed of the motor using A JOYSTICK!!
-*Created by: Michael Bowyer 11/15/2016
+* motor driver control using HC-06 Bluetooth communication Module!
+*Control the speed of the motor using A bluetooth app!
+*Created by: Michael Bowyer 11/23/2016
 */
 
-//Joystick Pin information
-int xPin = A1;//initialize  the X-axis of the joystick to an anolog pin
-int yPin = A0;//initialize  the Y-axis of the joystick to an anolog pin
-int buttonPin = 2;//initialize  the button of the joystick to an digitalpin
-
 //H-Bridge Pin Information to control Left motor
-int motorL_speedPin = 5; // Speed(PWM) control H-bridge output 
-int motorL_Forward = 6; // H-bridge direction control 
-int motorL_Backward = 7; // H-bridge direction control 
+int motorL_speedPin = 11; // Speed(PWM) control H-bridge output 
+int motorL_Forward = 12; // H-bridge direction control 
+int motorL_Backward = 13; // H-bridge direction control 
 
 //H-Bridge Pin Information to control Right motor
-int motorR_speedPin = 11; // Speed(PWM) control H-bridge output 
-int motorR_Forward = 12; // H-bridge direction control 
-int motorR_Backward = 13; // H-bridge direction control 
+int motorR_speedPin = 5; // Speed(PWM) control H-bridge output 
+int motorR_Forward = 6; // H-bridge direction control 
+int motorR_Backward = 7; // H-bridge direction control 
 
 //Variables needed to control motor
 float left_motor_speed=0; // value for motor speed
 float right_motor_speed=0; // value for motor speed
+int start_stop=0;
 
-//variables to read in joystick data
-int xPosition = 0;// set initial value of x-axis to 0.
-int yPosition = 0;// set initial value of y-axis to 0.
-int buttonState = 0;// set initial value of button to 0.
+//variables to read in from the bluetooth module
+char recieved_data; // variable for receiving data from bluetooth serial port
+int LED = 13; // On-board LED pin detail
 
 void setup() {
   // initialize serial communications at 9600 bps:
   Serial.begin(9600); 
-  
-  //set joystick interface pins as inputs
-  pinMode(xPin, INPUT);// set x axis as input. 
-  pinMode(yPin, INPUT);//set y axis as input
-  pinMode(buttonPin, INPUT); 
   
   //set left motor interface pins as outputs
    pinMode(motorL_speedPin, OUTPUT);// set Speed(PWM) control H-bridge as output 
@@ -56,63 +46,65 @@ void setup() {
   analogWrite(motorR_speedPin, 0);//set initial speed of right to 0
   digitalWrite(motorR_Forward, HIGH);//have right motor drive forward.
   digitalWrite(motorR_Backward, LOW);//have right motor drive forward. 
+  
+  //initializng bluetooth controlled LED output
+  pinMode(LED, OUTPUT);
+  digitalWrite(LED, LOW);
 }
 
 void loop() {
-
+  //start out by turning motors off if no input is recieved
   left_motor_speed=0; // calculate speed to send to left motor
   right_motor_speed= 0;//calculate speed to send to right motor
 
 //Gather Joystick and Button Push Values
-    xPosition = analogRead(xPin);//read the x axis value
-    delay(10);//this is required inbetween analog reads. 
-    yPosition = analogRead(yPin);//read the y axis value
-    buttonState = digitalRead(buttonPin);//read the button push value
+   if( Serial.available() ) // if serial data is available to read 
+   {
+     recieved_data = Serial.read(); //read data & store it in ‘recd_dat’ 
+   }
 
 //Print out Joystick Data which was read
-    Serial.print("X: ");
-    Serial.print(xPosition);
-    Serial.print(" | Y: ");
-    Serial.print(yPosition);
-    Serial.print(" | Button: ");
-    Serial.print(buttonState);
+    Serial.print("Recieved from Bluetooth: ");
+    Serial.print(recieved_data);
         
-//CALCULATE SPEED OF MOTORS This is done using the idea that the formula
-// (speed- turn) will return a value inbetween -1 and 1, and that opposite formula
-// (speed + turn) will also return a value inbetween -1 and 1. This acts as a percentage
-//control. 
-  int turnI;//will hold the value of the X-axis of the joystick position.
-  turnI=map(xPosition, 0, 1023, 100, -100);//Convert X-axis of joystick into value between -100 & 100.
-  int speedI;//will hold the value of the Y-axis of the joystick position.
-  speedI=map(yPosition, 0, 1023, 100, -100);//Convert Y-axis of joystick into value between -100 & 100.
-  
-  //printing out integer values of turn and speed
-    Serial.print("   TurnI: ");
-    Serial.print(turnI);
-    Serial.print(" | speedI: ");
-    Serial.print(speedI);
-        
-  //turning turn and speed into floating points inbetween -1 and 1. 
-  float turnF= (float)turnI/100; // turn the -100 to 100 range to -1 to 1
-  float speedF= (float)speedI/100; // turn the -100 to 100 range to -1 to 1.
-  
-  //printing floating point turn and speed values
-   Serial.print("   TurnF: ");
-    Serial.print(turnF);
-    Serial.print(" | speedF: ");
-    Serial.println(speedF);
-  
-  left_motor_speed=254*(speedF+turnF); // calculate speed to send to left motor
-  right_motor_speed= 254*(speedF-turnF);//calculate speed to send to right motor
-  
-//double check that each motor speed is not larger than 255 or less than -255
-  if(right_motor_speed > 255){right_motor_speed=254;}
-  else if(right_motor_speed < -255){right_motor_speed=-254;}
-  if(left_motor_speed > 255){left_motor_speed=254;}
-  else if(left_motor_speed < -255){left_motor_speed=-254;}
- 
+//CALCULATE SPEED OF MOTORS BASED ON INPUT
+switch (recieved_data) {
+    case 'W'://Drive Robot Forward
+       left_motor_speed=254;// Turn left motor full speed
+       right_motor_speed= 254;//turn right motor full speed
+      break;
+    case 'A'://turn robot left
+      left_motor_speed=-254;// Turn left motor full speed
+      right_motor_speed= 254;//turn right motor full speed
+      break;
+    case 'S'://drive robot backward
+      left_motor_speed=-254;// Turn left motor full speed
+      right_motor_speed=-254;//turn right motor full speed
+      break;
+    case 'D'://turn robot right
+      left_motor_speed=254;// Turn left motor full speed
+      right_motor_speed=-254;//turn right motor full speed
+      break; 
+    case 'Z'://Force Robot to Stop      left_motor_speed=254;// Turn left motor full speed
+      start_stop=0;
+      break; 
+    case 'X'://Allow Robot to Move again      left_motor_speed=254;// Turn left motor full speed
+      start_stop=1;
+      break;   
+    default:  // if nothing else matches, do the default
+     left_motor_speed=0; // calculate speed to send to left motor
+     right_motor_speed= 0;//calculate speed to send to right motor
+    break;
+}
 //write the speeds to the motors!
-  sendMotorSpeed(left_motor_speed, right_motor_speed);
+  if(start_stop==1)
+  {
+    sendMotorSpeed(left_motor_speed, right_motor_speed);
+  }
+  else
+  {
+    sendMotorSpeed(0, 0);
+  }
   
   delay(10); // add some delay between reads
 }

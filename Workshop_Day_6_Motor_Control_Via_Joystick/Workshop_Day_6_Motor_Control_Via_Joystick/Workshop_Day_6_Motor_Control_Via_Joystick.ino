@@ -1,9 +1,8 @@
-/*
-* Arduino code for SN754410 H-bridge
-* motor driver control.
-*Control the speed of the motor using A JOYSTICK!!
-*Created by: Michael Bowyer 11/15/2016
-*/
+/***************************************************************************************************************************************************************************************************************************************************************************
+Name: Arduion Workshop Day #5
+Purpose: Motor control using Arduino code for SN754410 H-bridgemotor driver control.
+Control the speed of the motor using using A JOYSTICK!!
+***************************************************************************************************************************************************************************************************************************************************************************/
 
 //Joystick Pin information
 int xPin = A1;//initialize  the X-axis of the joystick to an anolog pin

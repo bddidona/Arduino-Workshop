@@ -1,3 +1,8 @@
+/***************************************************************************************************************************************************************************************************************************************************************************
+Name: Arduion Workshop Day #4
+Purpose: Joystick control. Outputting read in joystick values to serial monitor.
+***************************************************************************************************************************************************************************************************************************************************************************/
+
 int xPin = A1;//initialize  the X-axis of the joystick to an anolog pin
 int yPin = A0;//initialize  the Y-axis of the joystick to an anolog pin
 int buttonPin = 2;//initialize  the button of the joystick to an digitalpin

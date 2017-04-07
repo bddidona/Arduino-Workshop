@@ -1,10 +1,9 @@
-/*
-* Arduino code for SN754410 H-bridge
-* motor driver control.
-*Control the speed of the motor using the Serial Terminal!
-* copyleft Feb. 2010, Fabian Winkler
-*
-*/
+/***************************************************************************************************************************************************************************************************************************************************************************
+Name: Arduion Workshop Day #5
+Purpose: Motor control using Arduino code for SN754410 H-bridgemotor driver control.
+Control the speed of the motor using the Serial Terminal! Just enter a speed 0 -255!
+***************************************************************************************************************************************************************************************************************************************************************************/
+
 int speedPin = 3; // H-bridge enable pin for speed control
 int motor1APin = 6; // H-bridge leg 1
 int motor2APin = 7; // H-bridge leg 2

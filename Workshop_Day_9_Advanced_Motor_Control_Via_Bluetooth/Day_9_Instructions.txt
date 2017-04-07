@@ -1,0 +1,14 @@
+Arduino Workshop Instructions - Day 9:
+
+	This code will allow you to control the remote control car via the android app developed for this very arduino workshop!
+	
+	In order to control the vehicle using this app, you must download the android app onto a android device. The installer for the app is located in the Android APK Installer folder of this directory. Simply downloed this file onto an android device and open it! The app should begin to install. If it doesn't go into developer options and change the "allow third party apps" setting. This way the device will allow the installastion of apk files if they are not on the play store.
+	
+	Now that the app is installed, open it up, select the HC-06 or bluetooth device you want to connect to, and select the control mode you want!
+	
+	1) Joystick: Control the car with an on screen joystick. Press the On/Off button to get the car to move! Press the headlights on button to get the headlights to turn on, and same goes for the horn!
+	2) Gyroscope: Control the car with the orientation of the android device! Simply hit the on/off button, then tilt the phone forward to move the car forward!
+	3) Tank Drive: Move the vehicles wheels independently of one another. Hit the On/Off button, then move the right slider bar to controll the right wheel speeds, and use the left slider bar to control the left wheel speed! Careful though, this control mode doesn't stream data, only when change on the slider bar is made, so keep moving those sliders!
+	
+	
+	I hope you enjoyed this workshop and learned more than you expected :)

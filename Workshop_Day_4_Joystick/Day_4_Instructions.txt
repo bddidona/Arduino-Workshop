@@ -1,0 +1,7 @@
+Arduino Workshop Instructions - Day 4:
+
+	This day of the arduino workshop participants will learn a few topics:
+		1) Joystick: this is nothing but 2 potentiometers and a button!
+		2) Serial communication: Again, this simply prints out the values read in by the joystick
+		
+	Note that the analog read pins are used for potentionmeters, while the button (which is digital) is used on the digital pins of the arduino!
