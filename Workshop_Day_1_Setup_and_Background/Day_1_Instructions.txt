@@ -1,13 +1,13 @@
 Arduino Workshop Instructions - Day 1:
 
-	The first day of the arduino workshop is fairly simple. The objective is to get participants familiar with the following:
-		1) What an arduino is, and how to download software to program it
-		2) what a bread board is, and how to use it.
+	The first day of the Arduino workshop is simple. The objective is to get participants familiar with the following:
+		1) What an Arduino is, and how to download software to program it
+		2) What a breadboard is and how to use it.
 		3) How Direct Current (DC) works, along with resistors.
 		
-	These concepts are necassry to know before participating in the workshop. 
-	Please note that the code for each of these projects is provided so students can build their own robot, and learn along the way. 
-	The code is provided souly for reference, and is meant for students to "see an example". 
+	These concepts are necessary to know before participating in the workshop. 
+	Please note that the code for each of these projects is provided so students can build their own robot and learn along the way. 
+	The code is provided mostly for reference, and is meant for students to "see an example". 
 	The code should not be taken for granted, and it should be understood well before moving on to the next day. 
 	If the code is not understood, the participant may have difficulty implementing the things they learned in the workshop without a good understanding of the code.
 	Just read the code, I hope I have commented on it enough for it to make sense to you!

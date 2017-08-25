@@ -1,7 +1,7 @@
 Arduino Workshop Instructions - Day 2:
 
-	This day of the arduino workshop participants will learn a few topics:
+	This day of the Arduino workshop participants will learn a few topics:
 		1) Button - a variable resistor, and how it can be used to control a...
 		2) basic coding- it is important to understand the code in this as the basics of coding such as if-then statements, and loops are used!
-		3) timing - understand that the arduino can save the time that things happen, and then use that time to see if a certain amount of time has passed.
+		3) timing - understand that the Arduino can save the time that things happen, and then use that time to see if a certain amount of time has passed.
 		4) LEDs - you want some light right? Make sure to plug the right ends into the positive or negative side!

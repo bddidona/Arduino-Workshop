@@ -1,12 +1,12 @@
 Arduino Workshop Instructions - Day 3:
 
-	This day of the arduino workshop participants will learn a few topics:
-		1) Poteniometer - a variable resistor, and how it can be used to control an LED's brightness.
-		2) Serial communication: The communication standard the arduino uses to talk to your computer! 
+	This day of the Arduino workshop participants will learn a few topics:
+		1) Potentiometer - a variable resistor, and how it can be used to control an LED's brightness.
+		2) Serial communication: The communication standard the Arduino uses to talk to your computer! 
 		
-	Once you have the LED & Potentionmeter hooked up open up the serial monitor! shortcut: Control + Shift + M
-	You should see the number changing as you turn the potentiometer! the values should range from 0 to 255.
+	Once you have the LED & Potentiometer hooked up open up the serial monitor! Shortcut: Control + Shift + M
+	You should see the number changing as you turn the potentiometer! The values should range from 0 to 255.
 		
-	The coolest thing about this, is a joystick is literally just 2 potentiometers! 1 for the Y axis and one for the X axis!
+	The coolest thing about this is a joystick is literally just 2 potentiometers! One for the Y-axis and one for the X-axis!
 	
-	Note:the potentiometer may be different from the one in the image. The main take away is that the "variable" pin of the potentionmeter is connected to the analog read pin.
+	Note: the potentiometer may be different from the one in the image. The main take away is that the "variable" pin of the potentiometer is connected to the analog read pin.
