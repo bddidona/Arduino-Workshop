@@ -171,6 +171,7 @@ void loop()
       right_motor_speed=0;//calculate speed to send to right moto
     }
     sendMotorSpeed(left_motor_speed, right_motor_speed);//change motor speed
+    avoidCrash();   //Check the ultrasonic sensor and stop the car if its driving toward an obstacle
 }
 
 
@@ -221,4 +222,20 @@ void sendMotorSpeed(float lSpeed, float rSpeed)//change direction of motors depe
        Serial.println(rightSpeed);
   }
   return;
+}
+
+void avoidCrash()
+{
+    // Clears the trigPin
+    digitalWrite(trigPin, LOW);
+    delayMicroseconds(2);
+    // Sets the trigPin on HIGH state for 10 micro seconds
+    digitalWrite(trigPin, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(trigPin, LOW);
+    // Reads the echoPin, returns the sound wave travel time in microseconds
+    duration = pulseIn(echoPin, HIGH);
+    // Calculating the distance
+    distance = duration*0.034/2;
+    //TODO: Will check wheel speeds and will set wheel speeds to zero if moving forward
 }
