@@ -4,10 +4,10 @@ Arduino Workshop Instructions - Day 8:
 	The app can be found at the following URL: https://play.google.com/store/apps/details?id=com.giumig.apps.bluetoothserialmonitor
 	
 	To use this application to control the car first make sure the motors are connected using the same way they were from Day 6 when the vehicle was being driven using a joystick.
-	Please note you may need to change the arduino pins! Also make sure that the bluetooth device is on.
+	Please note you may need to change the Arduino pins! Also make sure that the bluetooth device is on.
 	
-	Once the vehicle is ready, and the app has been downloaded, open the app and select the HC-06 device which you connted to in workshop day 7. 
-	Once connected, the application will ask how you want to contorl the vehicle, select controller mode!
+	Once the vehicle is ready, and the app has been downloaded, open the app and select the HC-06 device which you connected to in workshop day 7. 
+	Once connected, the application will ask how you want to control the vehicle, select controller mode!
 	
 	Once in controller mode go into the top right of the screen and press the three dots. This will bring up a menu for the data to send when buttons are pressed. Enter the following data for each button:
 	
